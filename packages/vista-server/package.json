@@ -2,7 +2,8 @@
   "name": "vista-server",
   "version": "0.0.0",
   "scripts": {
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "test": "bun test"
   },
   "dependencies": {
     "@elysiajs/eden": "^1.0.14",
