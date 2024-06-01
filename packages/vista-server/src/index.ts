@@ -1,7 +1,9 @@
-import { app } from "@/app";
+import { Vista, VistaComponentRegistry } from "../implementation/vista";
+import Greeting from "./components/Greeting";
 
-app.listen(3000);
-
-console.log(
-  `Vista-server is running at ${app.server?.hostname}:${app.server?.port}`
+const vistaComponentRegistry = new VistaComponentRegistry().addComponent(
+  Greeting
 );
+const vista = new Vista(vistaComponentRegistry);
+
+vista.listen();
