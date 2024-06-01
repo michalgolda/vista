@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { GreetingService } from "@/services";
+import { GreetingService } from "@/greeting";
 
 describe("Greeting service", () => {
   it("greeting method return properly value", () => {
