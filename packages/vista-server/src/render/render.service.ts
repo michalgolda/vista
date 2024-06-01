@@ -1,14 +1,22 @@
-import { createElement } from "react";
+import { FunctionComponent, createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
-export default {
-  render: (componentName: string) => {
-    const component = require("vista-components")[componentName];
-    const element = createElement(component, {
-      name: "michal",
-    });
-    const html = renderToStaticMarkup(element);
+export default new (class {
+  public render(componentName: string, props: any) {
+    const element = this.getElement(componentName, props);
+    const markup = renderToStaticMarkup(element);
 
-    return html;
-  },
-};
+    return markup;
+  }
+
+  private getElement(componentName: string, props: any) {
+    const component = this.importComponent(componentName);
+    const element = createElement(component, props, null);
+
+    return element;
+  }
+
+  private importComponent(componentName: string): FunctionComponent<any> {
+    return require("vista-components")[componentName];
+  }
+})();
