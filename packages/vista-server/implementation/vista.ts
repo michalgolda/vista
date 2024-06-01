@@ -15,11 +15,17 @@ export class DynamicComponentError extends Error {
   }
 }
 
+export class ComponentTypeError extends Error {
+  constructor() {
+    super("Provided vista componenst type does not exists.");
+  }
+}
+
 export class VistaComponent implements IVistaComponent {
   centralComponent: FunctionComponent<any>;
   props?: any;
   endpointName: string;
-  type: VistaComponentType = VistaComponentType.STATIC;
+  type: VistaComponentType;
 
   constructor(
     centralComponent: FunctionComponent<any>,
@@ -80,13 +86,30 @@ export class Vista implements IVista {
         for (let component of availableComponents) {
           app.get(
             `/${component.endpointName}`,
-            ({ query }) => {
+            ({ query: componentParams }) => {
+              let rendererResult = null;
+
               switch (component.type) {
                 case VistaComponentType.STATIC:
-                  return this.renderer.renderStatic(component, query);
+                  rendererResult = this.renderer.renderStatic(
+                    component,
+                    componentParams
+                  );
+                  break;
                 case VistaComponentType.DYNAMIC:
-                  return this.renderer.renderDynamic(component, query);
+                  rendererResult = this.renderer.renderDynamic(
+                    component,
+                    componentParams
+                  );
+                  break;
+                default:
+                  throw new ComponentTypeError();
               }
+
+              return {
+                params: componentParams,
+                markup: rendererResult,
+              };
             },
             {
               query: component.props,
