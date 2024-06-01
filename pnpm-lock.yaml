@@ -12,14 +12,20 @@ importers:
         specifier: ^19.1.1
         version: 19.1.1
 
-  packages/vista-components:
+  packages/example:
     dependencies:
+      elysia:
+        specifier: latest
+        version: 1.0.22(@sinclair/typebox@0.32.31)(typescript@5.4.5)
       react:
         specifier: ^18.3.1
         version: 18.3.1
       typescript:
         specifier: ^5.0.0
         version: 5.4.5
+      vista:
+        specifier: workspace:*
+        version: link:../vista
     devDependencies:
       '@types/bun':
         specifier: latest
@@ -28,11 +34,8 @@ importers:
         specifier: ^18.3.3
         version: 18.3.3
 
-  packages/vista-server:
+  packages/vista:
     dependencies:
-      '@elysiajs/eden':
-        specifier: ^1.0.14
-        version: 1.0.14(elysia@1.0.22(@sinclair/typebox@0.32.31)(typescript@5.4.5))
       elysia:
         specifier: latest
         version: 1.0.22(@sinclair/typebox@0.32.31)(typescript@5.4.5)
@@ -42,9 +45,6 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
-      vista-components:
-        specifier: workspace:^
-        version: link:../vista-components
     devDependencies:
       '@types/react':
         specifier: ^18.3.3
@@ -57,16 +57,6 @@ importers:
         version: 1.1.12
 
 packages:
-
-  '@elysiajs/eden@1.0.14':
-    resolution: {integrity: sha512-ZFJ5f0UczWi+T8JtRD0rehUS7troTyJ3p7tGoBvjZxhnkINU0hFdB4P8tR8fkglAtv/uLpvZfPggv7UOV3DD3Q==}
-    peerDependencies:
-      elysia: '>= 1.0.22'
-
-  '@elysiajs/stream@1.0.2':
-    resolution: {integrity: sha512-/+cgqgxf8bGtRkdTIRRHsaucNfvrnIpAkpdAdTPsE2zjH8lpfcu9LuvbNlQ1dY1ztDxytKK+Izg6xRtjj31UhQ==}
-    peerDependencies:
-      elysia: '>= 1.0.2'
 
   '@jest/schemas@29.6.3':
     resolution: {integrity: sha512-mo5j5X+jIZmJQveBKeS/clAueipV7KgiX1vMgCxam1RNYiqE1w62n0/tJJnHtjW8ZHcQco5gY85jA3mi0L+nSA==}
@@ -455,11 +445,6 @@ packages:
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
-  nanoid@5.0.7:
-    resolution: {integrity: sha512-oLxFY2gd2IqnjcYyOXD8XGCftpGtZP2AbHbOkthDkvRywH5ayNtPVy9YlOPcHckXzbLTCHpkb7FB+yuxKV13pQ==}
-    engines: {node: ^18 || >=20}
-    hasBin: true
-
   node-machine-id@1.1.12:
     resolution: {integrity: sha512-QNABxbrPa3qEIfrE6GOJ7BYIuignnJw7iQ2YPbc3Nla1HzRJjXzZOiikfF8m7eAMfichLt3M4VgLOetqgDmgGQ==}
 
@@ -626,16 +611,6 @@ packages:
     engines: {node: '>=12'}
 
 snapshots:
-
-  '@elysiajs/eden@1.0.14(elysia@1.0.22(@sinclair/typebox@0.32.31)(typescript@5.4.5))':
-    dependencies:
-      '@elysiajs/stream': 1.0.2(elysia@1.0.22(@sinclair/typebox@0.32.31)(typescript@5.4.5))
-      elysia: 1.0.22(@sinclair/typebox@0.32.31)(typescript@5.4.5)
-
-  '@elysiajs/stream@1.0.2(elysia@1.0.22(@sinclair/typebox@0.32.31)(typescript@5.4.5))':
-    dependencies:
-      elysia: 1.0.22(@sinclair/typebox@0.32.31)(typescript@5.4.5)
-      nanoid: 5.0.7
 
   '@jest/schemas@29.6.3':
     dependencies:
@@ -952,8 +927,6 @@ snapshots:
       brace-expansion: 2.0.1
 
   minimist@1.2.8: {}
-
-  nanoid@5.0.7: {}
 
   node-machine-id@1.1.12: {}
 
