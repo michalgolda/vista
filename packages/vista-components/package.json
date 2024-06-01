@@ -1,9 +1,9 @@
 {
   "name": "vista-components",
-  "module": "dist/index.ts",
+  "module": "dist/index.js",
   "type": "module",
   "scripts": {
-    "build": "bun build index.ts --outdir dist --minify"
+    "build": "bun build ./src/index.ts --outdir dist --minify"
   },
   "devDependencies": {
     "@types/bun": "latest",
