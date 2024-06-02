@@ -1,12 +1,13 @@
 {
   "name": "vista",
   "version": "0.0.0",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
     "clean": "rm -rf dist/",
     "build:types": "tsc -p tsconfig.dts.json",
-    "build": "pnpm run clean && bun build --outdir dist/ ./src/index.ts --splitting --target node --minify && pnpm run build:types"
+    "build": "pnpm run clean && bun build --outdir dist/ ./src/index.ts --minify && pnpm run build:types"
   },
   "dependencies": {
     "elysia": "latest",

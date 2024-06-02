@@ -8,12 +8,11 @@ import { DynamicComponentError } from "./exceptions";
 export class VistaComponent implements IVistaComponent {
   centralComponent: CentralComponent;
   props?: any;
-  endpointName: string;
   type: ComponentType;
+  name: string;
 
   constructor(
     centralComponent: CentralComponent,
-    endpointName: string,
     props?: any,
     type: ComponentType = ComponentType.STATIC
   ) {
@@ -25,6 +24,10 @@ export class VistaComponent implements IVistaComponent {
       throw new DynamicComponentError();
     }
 
-    this.endpointName = endpointName;
+    this.name = this.getCentralComponentName();
+  }
+
+  getCentralComponentName(): string {
+    return this.centralComponent.name.toLocaleLowerCase();
   }
 }

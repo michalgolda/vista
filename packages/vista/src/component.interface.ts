@@ -15,6 +15,7 @@ export type CentralComponent =
 export interface IVistaComponent {
   readonly props?: any;
   readonly type: ComponentType;
-  readonly endpointName: string;
+  readonly name: string;
   readonly centralComponent: CentralComponent;
+  getCentralComponentName(): string;
 }

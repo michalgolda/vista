@@ -18,22 +18,24 @@ export class Vista implements IVista {
         const availableComponents = this.componentRepository.getComponents();
 
         for (let component of availableComponents) {
+          const name = component.name;
+
           app.get(
-            `/${component.endpointName}`,
-            ({ query: componentParams }) => {
+            `/${name}`,
+            ({ query: componentProps }) => {
               let rendererResult = null;
 
               switch (component.type) {
                 case ComponentType.STATIC:
                   rendererResult = this.renderer.renderStatic(
                     component,
-                    componentParams
+                    componentProps
                   );
                   break;
                 case ComponentType.DYNAMIC:
                   rendererResult = this.renderer.renderDynamic(
                     component,
-                    componentParams
+                    componentProps
                   );
                   break;
                 default:
@@ -41,7 +43,7 @@ export class Vista implements IVista {
               }
 
               return {
-                params: componentParams,
+                params: componentProps,
                 markup: rendererResult,
               };
             },
@@ -56,10 +58,16 @@ export class Vista implements IVista {
       .get("/components", () => {
         const availableComponents = this.componentRepository
           .getComponents()
-          .map((component) => ({
-            endpointName: component.endpointName,
-            type: component.type,
-          }));
+          .map((component) => {
+            const name = component.name;
+
+            return {
+              name: name,
+              endpoint: `/render/${name}`,
+              type: component.type,
+              props: component.props,
+            };
+          });
 
         return availableComponents;
       });
