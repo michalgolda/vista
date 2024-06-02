@@ -28,6 +28,6 @@ export class VistaComponent implements IVistaComponent {
   }
 
   getCentralComponentName(): string {
-    return this.centralComponent.name.toLocaleLowerCase();
+    return this.centralComponent.name.toLowerCase();
   }
 }
