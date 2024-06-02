@@ -3,7 +3,6 @@ import {
   ComponentType,
   IVistaComponent,
 } from "./component.interface";
-import { DynamicComponentError } from "./exceptions";
 
 export class VistaComponent implements IVistaComponent {
   centralComponent: CentralComponent;
@@ -19,12 +18,7 @@ export class VistaComponent implements IVistaComponent {
   ) {
     this.centralComponent = centralComponent;
     this.props = props;
-
     this.type = type;
-    if (this.type === ComponentType.DYNAMIC) {
-      throw new DynamicComponentError();
-    }
-
     this.name = name;
   }
 }
