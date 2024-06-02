@@ -13,6 +13,7 @@ export class VistaComponent implements IVistaComponent {
 
   constructor(
     centralComponent: CentralComponent,
+    name: string,
     props?: any,
     type: ComponentType = ComponentType.STATIC
   ) {
@@ -24,10 +25,6 @@ export class VistaComponent implements IVistaComponent {
       throw new DynamicComponentError();
     }
 
-    this.name = this.getCentralComponentName();
-  }
-
-  getCentralComponentName(): string {
-    return this.centralComponent.name.toLowerCase();
+    this.name = name;
   }
 }

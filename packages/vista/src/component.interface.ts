@@ -17,5 +17,4 @@ export interface IVistaComponent {
   readonly type: ComponentType;
   readonly name: string;
   readonly centralComponent: CentralComponent;
-  getCentralComponentName(): string;
 }

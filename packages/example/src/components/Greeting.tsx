@@ -11,6 +11,7 @@ export default function Greeting({ name }: GreetingProps) {
 
 export const VistaGreeting = new VistaComponent(
   Greeting,
+  "greeting",
   t.Object({
     name: t.String(),
   })

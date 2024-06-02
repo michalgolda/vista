@@ -19,6 +19,7 @@ export default function BlogPost({ title, body, author }: BlogPostProps) {
 
 export const VistaBlogPost = new VistaComponent(
   BlogPost,
+  "blogpost",
   t.Object({
     title: t.String(),
     body: t.String(),
