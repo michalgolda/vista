@@ -2,8 +2,6 @@ import { describe, it, expect, mock } from "bun:test";
 import { Renderer } from "../renderer";
 import { VistaComponent } from "../component";
 import { DynamicComponentError } from "../exceptions";
-import { createElement } from "react";
-import { renderToStaticMarkup } from "react-dom/server";
 
 describe("Renderer", () => {
   it("renderStatic method", () => {
