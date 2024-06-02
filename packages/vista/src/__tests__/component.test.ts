@@ -6,7 +6,7 @@ import { DynamicComponentError } from "../exceptions";
 describe("VistaComponent", () => {
   it("reject DYNAMIC component type", () => {
     const createVistaComponent = () => {
-      new VistaComponent(() => null, "", ComponentType.DYNAMIC);
+      new VistaComponent(() => null, "", null, ComponentType.DYNAMIC);
     };
 
     expect(createVistaComponent).toThrowError(DynamicComponentError);
