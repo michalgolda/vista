@@ -7,7 +7,8 @@
     "dev": "bun run --watch src/index.ts",
     "clean": "rm -rf dist/",
     "build:types": "tsc -p tsconfig.dts.json",
-    "build": "pnpm run clean && bun build --outdir dist/ ./src/index.ts --minify && pnpm run build:types"
+    "build": "pnpm run clean && bun build --outdir dist/ ./src/index.ts --minify && pnpm run build:types",
+    "test": "bun test"
   },
   "dependencies": {
     "elysia": "latest",
