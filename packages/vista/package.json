@@ -4,7 +4,9 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "build": "bun build --outdir dist/ ./src/index.ts --minify"
+    "clean": "rm -rf dist/",
+    "build:types": "tsc -p tsconfig.dts.json",
+    "build": "pnpm run clean && bun build --outdir dist/ ./src/index.ts --splitting --target node --minify && pnpm run build:types"
   },
   "dependencies": {
     "elysia": "latest",
